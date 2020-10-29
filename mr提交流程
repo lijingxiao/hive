@@ -1,0 +1,10 @@
+mr任务提交流程
+
+1. client提交job，联系resourcemanager
+2. rs为其分配一个applicationId
+3. client将jar包，文件切片以及配置文件等信息提交到hdfs
+4. client向rs申请资源，rs分配一个nodemanager，在这个nm上启动master进程
+5. master读取hdfs上的文件信息，向rs申请可用的资源，rs会返回给它一个可用资源的集合
+6. 在对应可用资源节点上启动对应的yarn子进程，其实就是excutor
+7. excutor读取hdfs上的文件信息
+8. run task
